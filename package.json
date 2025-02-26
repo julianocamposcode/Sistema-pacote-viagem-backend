@@ -1,0 +1,31 @@
+{
+  "name": "sistema-pacotes-viagem-backend",
+  "version": "1.0.0",
+  "description": "backend da aplicação de venda de  pacotes de viagem",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julianocamposcode/Sistema-pacote-viagem-backend.git"
+  },
+  "keywords": [
+    "node",
+    "API",
+    "mvc",
+    "rest",
+    "backend"
+  ],
+  "author": "Juliano campos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julianocamposcode/Sistema-pacote-viagem-backend/issues"
+  },
+  "homepage": "https://github.com/julianocamposcode/Sistema-pacote-viagem-backend#readme",
+  "dependencies": {
+    "mysql2": "^3.12.0"
+  }
+}
