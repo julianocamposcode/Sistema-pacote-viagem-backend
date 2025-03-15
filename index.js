@@ -17,14 +17,30 @@ const pacote = new PacoteViagem(
     "12",
     "Desfrute de uma viagem inesquecível pela cidade do amor! Conheça a Torre Eiffel, o Museu do Louvre e faça passeios românticos pelo Rio Sena.",
     "https://www.youtube.com/embed/WdUzB1NyWVY",
+    // "2",
+    // "Pacote para Cancun, México",
+    // "20 de julho de 2025",
+    // "5.200",
+    // "5.200",
+    // "Voo ida e volta com traslado do aeroporto ao hotel",
+    // "Resort all-inclusive 5 estrelas",
+    // "Todas as refeições inclusas (café da manhã, almoço, jantar, bebidas)",
+    // "Tulum, Isla Mujeres, mergulho em recifes de corais",
+    // "Condições de Pagamento: Entrada de 30% + parcelamento em até 12x sem juros",
+    // "https://images.unsplash.com/photo-1579493933703-70473cdf84f8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2FuY3VtJTIwbSVDMyVBOXhpY298ZW58MHx8MHx8fDA%3D",
+    // "6 dias",
+    // "Rio de Janeiro",
+    // "8",
+    // "Aproveite as praias paradisíacas de Cancun com águas cristalinas e areia branca. O pacote inclui hospedagem luxuosa, passeios guiados e experiências incríveis no Caribe..",
+    // "https://www.youtube.com/embed/6Xo2doDCzjI",
 )
 
 
-pacote.gravar().then(() => {
-    console.log('Pacote gravado no banco de dados com sucesso!');
-}).catch(error => {
-    console.log(error);
-});
+// pacote.gravar().then(() => {
+//     console.log('Pacote gravado no banco de dados com sucesso!');
+// }).catch(error => {
+//     console.log(error);
+// });
 
 // pacote.editar().then(() => {
 //     console.log('Pacote editado com sucesso!');
@@ -41,8 +57,8 @@ pacote.gravar().then(() => {
 //     console.log(error)
 // })
 
-// pacote.excluir().then(() => {
-//     console.log('Pacote excluido com sucesso')
-// }).catch(error => {
-//     console.log(error)
-// })
+pacote.excluir().then(() => {
+    console.log('Pacote excluido com sucesso')
+}).catch(error => {
+    console.log(error)
+})
