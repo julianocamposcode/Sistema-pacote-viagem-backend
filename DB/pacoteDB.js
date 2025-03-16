@@ -124,35 +124,65 @@ export default class PacoteDB {
             await conexao.release();
         }
     }
-    async consultar(pacote) {
-        if (pacote instanceof PacoteViagem) {
-            const conexao = await conectar();
 
-            const sql = `SELECT * FROM PacoteViagem ORDER by nome`;
-            const [linhas, campos] = await conexao.execute(sql);
-            const listaPacotes = []
-            for (const linha of linhas) {
-                const pacote = new PacoteViagem(
-                    linha.id,
-                    linha.nome,
-                    linha.data_partida,
-                    linha.preco,
-                    linha.total,
-                    linha.transporte,
-                    linha.hospedagem,
-                    linha.alimentacao,
-                    linha.passeios,
-                    linha.pagamento,
-                    linha.imagem_url,
-                    linha.duracao,
-                    linha.local_partida,
-                    linha.lugares_disponiveis,
-                    linha.descricao,
-                    linha.video_url,
-                )
-                listaPacotes.push(pacote)
-            }
-            return listaPacotes
+    async consultar() {
+        const conexao = await conectar();
+        const sql = `SELECT * FROM PacoteViagem ORDER BY nome`;
+        const [linhas, campos] = await conexao.execute(sql);
+
+        await conexao.release()
+        const listaPacotes = []
+        for (const linha of linhas) {
+            const pacote = new PacoteViagem(
+                linha.id,
+                linha.nome,
+                linha.data_partida,
+                linha.preco,
+                linha.total,
+                linha.transporte,
+                linha.hospedagem,
+                linha.alimentacao,
+                linha.passeios,
+                linha.pagamento,
+                linha.imagem_url,
+                linha.duracao,
+                linha.local_partida,
+                linha.lugares_disponiveis,
+                linha.descricao,
+                linha.video_url
+            )
+            listaPacotes.push(pacote)
         }
+        return listaPacotes
+    }
+    async consultarPorId(id) {
+        const conexao = await conectar();
+        const sql = `SELECT * FROM PacoteViagem WHERE id = ?`;
+        const [linhas, campos] = await conexao.execute(sql, [id]);
+
+        await conexao.release()
+        const listaPacotes = []
+        for (const linha of linhas) {
+            const pacote = new PacoteViagem(
+                linha.id,
+                linha.nome,
+                linha.data_partida,
+                linha.preco,
+                linha.total,
+                linha.transporte,
+                linha.hospedagem,
+                linha.alimentacao,
+                linha.passeios,
+                linha.pagamento,
+                linha.imagem_url,
+                linha.duracao,
+                linha.local_partida,
+                linha.lugares_disponiveis,
+                linha.descricao,
+                linha.video_url
+            )
+            listaPacotes.push(pacote)
+        }
+        return listaPacotes
     }
 }

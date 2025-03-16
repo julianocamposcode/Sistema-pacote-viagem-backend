@@ -4,7 +4,8 @@ import PacoteCtrl from "../controller/pacoteCtrl.js";
 const rotaPacote = Router();
 const pacCtrl = new PacoteCtrl()
 
-rotaPacote.get('/:cpf', pacCtrl.consultar)
+rotaPacote.get('/:id', pacCtrl.consultar)
+rotaPacote.get('/', pacCtrl.consultar)
 rotaPacote.post('/', pacCtrl.gravar)
 rotaPacote.put('/', pacCtrl.alterar)
 rotaPacote.patch('/', pacCtrl.alterar)

@@ -156,7 +156,7 @@ export default class PacoteViagem {
       this.#video_url = novovideo_url
    }
 
-   toJson() {
+   toJSON() {
       return {
          "id": this.#id,
          "nome": this.#nome,
@@ -193,5 +193,9 @@ export default class PacoteViagem {
    async consultar() {
       const pacoteDB = new PacoteDB()
       return await pacoteDB.consultar(this)
+   }
+   async consultarPorId(id) {
+      const pacoteDB = new PacoteDB()
+      return await pacoteDB.consultarPorId(id)
    }
 }

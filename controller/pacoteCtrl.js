@@ -132,7 +132,7 @@ export default class PacoteCtrl {
             const dados = requisicao.body
             const id = dados.id
             if (id) {
-                const pacote = PacoteViagem(id)
+                const pacote = new PacoteViagem(id)
                 pacote.excluir().then(() => {
                     resposta.status(201).json({
                         "status": true,
@@ -161,17 +161,31 @@ export default class PacoteCtrl {
     consultar(requisicao, resposta) {
         if (requisicao.method === 'GET') {
             const pacote = new PacoteViagem()
-            pacote.consultar().then((listaPacotes) => {
-                resposta.status(201).json({
-                    "status": true,
-                    "pacotes": listaPacotes
+            if (requisicao.params.id) {
+                pacote.consultarPorId(requisicao.params.id).then(listaPacotes => {
+                    resposta.status(200).json({
+                        "status": true,
+                        "pacotes": listaPacotes
+                    })
+                }).catch(erro => {
+                    resposta.status(400).json({
+                        "status": false,
+                        "mensagem": "Erro ao consultar Pacote por ID" + erro
+                    })
                 })
-            }).catch(erro => {
-                resposta.status(400).json({
-                    "status": false,
-                    "mensagem": "Erro ao consultar Pacote"
+            } else {
+                pacote.consultar().then(listaPacotes => {
+                    resposta.status(200).json({
+                        "status": true,
+                        "pacotes": listaPacotes
+                    })
+                }).catch(erro => {
+                    resposta.status(400).json({
+                        "status": false,
+                        "mensagem": "Erro ao consultar Pacote" + erro
+                    })
                 })
-            })
+            }
         } else {
             resposta.status(400).json({
                 "status": false,
